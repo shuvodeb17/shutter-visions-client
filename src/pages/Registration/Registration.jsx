@@ -28,19 +28,19 @@ const Registration = () => {
                 <div>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <p className='mb-2 '>Name</p>
-                        <input className='w-full p-3 rounded mb-3' {...register("name")} />
+                        <input className='w-full p-3 rounded mb-3' {...register("name")} required />
 
                         <p className='mb-2'>Email</p>
-                        <input className='w-full p-3 rounded mb-3' {...register("email", { required: true })} />
+                        <input className='w-full p-3 rounded mb-3' {...register("email", { required: true })} required />
 
                         <p className=''>Password</p>
-                        <input className='w-full p-3 rounded mb-3' {...register("password", { required: true })} />
+                        <input className='w-full p-3 rounded mb-3' {...register("password", { required: true })} required />
 
                         <p className=''>Confirm Password</p>
-                        <input className='w-full p-3 rounded mb-3' {...register("confirmPassword", { required: true })} />
+                        <input className='w-full p-3 rounded mb-3' {...register("confirmPassword", { required: true })} required />
 
                         <p className='mb-2'>PhotoURL</p>
-                        <input className='w-full p-3 rounded mb-3' {...register("photoUrl", { required: true })} />
+                        <input className='w-full p-3 rounded mb-3' {...register("photoUrl", { required: true })} required />
 
                         <br />
                         <input className='w-full p-3 rounded cursor-pointer bg-[#fc2036b8] text-white font-bold border-0 mt-5' type="submit" value='Sign Up' />

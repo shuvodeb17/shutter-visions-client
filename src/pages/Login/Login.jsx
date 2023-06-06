@@ -31,10 +31,10 @@ const Login = () => {
                 <div>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <p className='mb-2 mt-5'>Username or Email Address</p>
-                        <input className='w-full p-3 rounded' {...register("email")} />
+                        <input className='w-full p-3 rounded' {...register("email")} required />
 
                         <p className='mb-2 mt-5'>Password</p>
-                        <input className='w-full p-3 rounded mb-11' {...register("password", { required: true })} />
+                        <input className='w-full p-3 rounded mb-11' {...register("password", { required: true })} required />
 
                         <br />
                         <input className='w-full p-3 rounded cursor-pointer bg-[#fc2036b8] text-white font-bold border-0' type="submit" value='Login' />
