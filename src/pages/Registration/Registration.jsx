@@ -1,13 +1,42 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import loginImage from '../../assets/images/login/login-img.png';
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../providers/AuthProvider';
 
 const Registration = () => {
+
+    const { signUp, userProfileUpdate } = useContext(AuthContext)
+    const [error, setError] = useState('');
+    let navigate = useNavigate();
+    let location = useLocation();
+    let from = location.state?.from?.pathname || "/";
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data => {
         console.log(data)
+
+        if (data.password !== data.confirmPassword) {
+            setError('Password does not match');
+            return
+        }
+
+        signUp(data.email, data.password)
+            .then(result => {
+                const createdUser = result.user;
+                console.log(createdUser)
+                navigate(from, { replace: true });
+                // set name and photo
+                userProfileUpdate(data.name, data.photoUrl)
+                    .then(result => {
+                        console.log(result.user)
+                    }).catch(error => {
+                        console.log(error.message);
+                    })
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
     };
 
     return (
@@ -28,22 +57,40 @@ const Registration = () => {
                 <div>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <p className='mb-2 '>Name</p>
-                        <input className='w-full p-3 rounded mb-3' {...register("name")} required />
+                        <input className='w-full p-3 rounded mb' {...register("name", { required: true })} />
+                        {errors.name && <span className='text-red-600'>Name field is required</span>}
+
 
                         <p className='mb-2'>Email</p>
-                        <input className='w-full p-3 rounded mb-3' {...register("email", { required: true })} required />
+                        <input type='email' className='w-full p-3 rounded' {...register("email", { required: true })} />
+                        {errors.email && <span className='text-red-600'>Email field is required</span>}
+
 
                         <p className=''>Password</p>
-                        <input className='w-full p-3 rounded mb-3' {...register("password", { required: true })} required />
+                        <input type='password' className='w-full p-3 rounded' {...register("password", { required: true, minLength: 6, maxLength: 20, pattern: /(?=.*[A-Z])/ })} />
+
+                        {errors.password?.type == 'required' && <span className='text-red-600'>Password Field is required</span>}
+                        {errors.password?.type == 'minLength' && <span className='text-red-600'>Min length 6.</span>}
+                        {errors.password?.type == 'maxLength' && <span className='text-red-600'>Max length 20</span>}
+                        {errors.password?.type == 'pattern' && <span className='text-red-600'>At least one uppercase letter</span>}
 
                         <p className=''>Confirm Password</p>
-                        <input className='w-full p-3 rounded mb-3' {...register("confirmPassword", { required: true })} required />
+                        <input type='password' className='w-full p-3 rounded' {...register("confirmPassword", { required: true, minLength: 6, maxLength: 20, pattern: /(?=.*[A-Z])/ })} />
+                        {errors.password?.type == 'required' && <span className='text-red-600'>Confirm Password Field is required</span>}
+                        {errors.confirmPassword?.type == 'minLength' && <span className='text-red-600'>Min length 6.</span>}
+                        {errors.confirmPassword?.type == 'maxLength' && <span className='text-red-600'>Max length 20</span>}
+                        {errors.confirmPassword?.type == 'pattern' && <span className='text-red-600'>At least one uppercase letter</span>}
 
                         <p className='mb-2'>PhotoURL</p>
-                        <input className='w-full p-3 rounded mb-3' {...register("photoUrl", { required: true })} required />
+                        <input type='url' className='w-full p-3 rounded' {...register("photoUrl", { required: true })} />
+                        {errors.photoUrl && <span className='text-red-600'>Please enter your photo url</span>}
+
 
                         <br />
+                        <p className="text-center text-red-600">{error}</p>
+
                         <input className='w-full p-3 rounded cursor-pointer bg-[#fc2036b8] text-white font-bold border-0 mt-5' type="submit" value='Sign Up' />
+
                     </form>
                     <div className='mt-5 text-center mb-5'>
                         <p>Already have an Account ? <Link to='/login' className='text-[#FD5E6E]'>Login Account</Link> </p>

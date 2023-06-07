@@ -1,16 +1,36 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import loginImage from '../../assets/images/login/login-img.png';
 import './Login.css'
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import GoogleLogin from '../../components/GoogleLogin/GoogleLogin';
+import { AuthContext } from '../../providers/AuthProvider';
 
 
 const Login = () => {
 
+    const { signIn } = useContext(AuthContext)
+    const [success, setSuccess] = useState('')
+    let navigate = useNavigate();
+    let location = useLocation();
+    let from = location.state?.from?.pathname || "/";
+
+    const [error, setError] = useState('')
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data => {
         console.log(data)
+        signIn(data.email, data.password)
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser)
+                setError('')
+                setSuccess('Login successful')
+                navigate(from, { replace: true });
+            })
+            .catch(error => {
+                setSuccess('')
+                setError(error.message)
+            })
     };
 
     return (
@@ -38,6 +58,8 @@ const Login = () => {
 
                         <br />
                         <input className='w-full p-3 rounded cursor-pointer bg-[#fc2036b8] text-white font-bold border-0' type="submit" value='Login' />
+                        <p className="text-center text-green-600 mt-3">{success}</p>
+                        <p className="text-center text-red-600 mt-3">{error}</p>
                     </form>
                     <div className='mt-5 text-center'>
                         <p>New User ? <Link to='/registration' className='text-[#FD5E6E]'>Create a New Account</Link> </p>
