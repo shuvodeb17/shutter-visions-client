@@ -16,6 +16,7 @@ const Registration = () => {
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data => {
+        console.log(data)
 
         if (data.password !== data.confirmPassword) {
             setError('Password does not match');
@@ -27,9 +28,9 @@ const Registration = () => {
                 const createdUser = result.user;
                 console.log(createdUser);
 
-                userProfileUpdate(data.name, data.photo)
+                userProfileUpdate(data.name, data.photoUrl)
                     .then(() => {
-                        const savedUser = { name: data.name, email: data.email }
+                        const savedUser = { name: data.name, email: data.email, photo: data.photoUrl }
                         fetch(`http://localhost:5000/users`, {
                             method: 'POST',
                             headers: {
@@ -108,7 +109,7 @@ const Registration = () => {
                     <div className='mt-5 text-center mb-5'>
                         <p>Already have an Account ? <Link to='/login' className='text-[#FD5E6E]'>Login Account</Link> </p>
                     </div>
-                    <GoogleLogin/>
+                    <GoogleLogin />
 
                 </div>
             </div>

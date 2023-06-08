@@ -2,7 +2,9 @@ import {
     createBrowserRouter,
 } from "react-router-dom";
 import PopularClasses from "../components/PopularClasses/PopularClasses";
+import Dashboard from "../Layout/Dashboard";
 import Main from "../Layout/Main";
+import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
 import Error from "../pages/Error/Error";
 import Home from "../pages/Home/Home/Home";
 import Login from "../pages/Login/Login";
@@ -30,6 +32,16 @@ const router = createBrowserRouter([
                 path: 'registration',
                 element: <Registration />
             },
+        ]
+    },
+    {
+        path: '/dashboard',
+        element: <Dashboard />,
+        children: [
+            {
+                path: '/dashboard/all-users',
+                element: <AllUsers />
+            }
         ]
     },
     {

@@ -23,7 +23,7 @@ const Header = () => {
                         <li><Link to='/'>Home</Link></li>
                         <li><Link to='/'>Instructors</Link></li>
                         <li><Link to='/'>Classes</Link></li>
-                        {user && <li><Link to='/'>Dashboard</Link></li>}
+                        {user && <li><Link to='/dashboard'>Dashboard</Link></li>}
                     </ul>
                 </div>
                 <Link to='/' className="btn btn-ghost normal-case text-xl">ShutterVisions</Link>
@@ -33,7 +33,7 @@ const Header = () => {
                     <li><Link to='/'>Home</Link></li>
                     <li><Link to='/'>Instructors</Link></li>
                     <li><Link to='/'>Classes</Link></li>
-                    {user && <li><Link to='/'>Dashboard</Link></li>}
+                    {user && <li><Link to='/dashboard'>Dashboard</Link></li>}
                 </ul>
             </div>
             <div className="navbar-end">
