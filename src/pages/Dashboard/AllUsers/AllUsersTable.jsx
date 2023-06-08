@@ -1,19 +1,8 @@
 import React from 'react';
 
-const AllUsersTable = ({ allUser, index }) => {
+const AllUsersTable = ({ allUser, index, handleMakeAdmin }) => {
 
-    const handleMakeAdmin = allUser => {
-        fetch(`http://localhost:5000/users/admin/${allUser._id}`, {
-            method: 'PATCH'
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                if (data.modifiedCount > 0) {
-                    console.log('admin')
-                }
-            })
-    }
+
 
     return (
         <tr>
