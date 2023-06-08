@@ -3,10 +3,12 @@ import loginImage from '../../assets/images/login/login-img.png';
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
+import GoogleLogin from '../../components/GoogleLogin/GoogleLogin';
 
 const Registration = () => {
 
     const { signUp, userProfileUpdate } = useContext(AuthContext)
+    console.log(userProfileUpdate)
     const [error, setError] = useState('');
     let navigate = useNavigate();
     let location = useLocation();
@@ -14,7 +16,6 @@ const Registration = () => {
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data => {
-        console.log(data)
 
         if (data.password !== data.confirmPassword) {
             setError('Password does not match');
@@ -24,18 +25,30 @@ const Registration = () => {
         signUp(data.email, data.password)
             .then(result => {
                 const createdUser = result.user;
-                console.log(createdUser)
-                navigate(from, { replace: true });
-                // set name and photo
-                userProfileUpdate(data.name, data.photoUrl)
-                    .then(result => {
-                        console.log(result.user)
-                    }).catch(error => {
+                console.log(createdUser);
+
+                userProfileUpdate(data.name, data.photo)
+                    .then(() => {
+                        const savedUser = { name: data.name, email: data.email }
+                        fetch(`http://localhost:5000/users`, {
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify(savedUser)
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                console.log(data)
+                            })
+
+                    })
+                    .catch(error => {
                         console.log(error.message);
                     })
             })
             .catch(error => {
-                console.log(error.message)
+                console.log(error.message);
             })
     };
 
@@ -95,6 +108,7 @@ const Registration = () => {
                     <div className='mt-5 text-center mb-5'>
                         <p>Already have an Account ? <Link to='/login' className='text-[#FD5E6E]'>Login Account</Link> </p>
                     </div>
+                    <GoogleLogin/>
 
                 </div>
             </div>

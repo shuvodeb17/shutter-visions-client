@@ -1,6 +1,7 @@
 import {
     createBrowserRouter,
 } from "react-router-dom";
+import PopularClasses from "../components/PopularClasses/PopularClasses";
 import Main from "../Layout/Main";
 import Error from "../pages/Error/Error";
 import Home from "../pages/Home/Home/Home";
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home />
+            },
+            {
+                path: 'popular-class',
+                element: <PopularClasses />
             },
             {
                 path: 'login',
