@@ -7,6 +7,7 @@ const image_token = import.meta.env.VITE_IMAGE_TOKEN
 const AddCourses = () => {
 
     const { user } = useContext(AuthContext)
+    console.log(user.photoURL)
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
@@ -26,7 +27,7 @@ const AddCourses = () => {
                 if (imageRes.success) {
                     const imageURL = imageRes.data.display_url;
                     const { courseName, instructorName, instructorEmail, courseImage, seats, price, status } = data;
-                    const allCourse = { courseName, instructorName, instructorEmail, courseImage: imageURL, seats: parseFloat(seats), price: parseFloat(price), status: 'pending' }
+                    const allCourse = { courseName, instructorName, instructorEmail, courseImage: imageURL, seats: parseFloat(seats), price: parseFloat(price), status: 'pending', instructorImage: user?.photoURL }
                     
                     
                     fetch(`http://localhost:5000/courses`, {

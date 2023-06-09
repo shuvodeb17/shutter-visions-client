@@ -60,7 +60,8 @@ const AllUsers = () => {
     }
 
     return (
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto px-3 md:px-16">
+            <h1 className="text-3xl text-center font-bold py-3">All Users: {allUsers?.length}</h1>
             <table className="table">
                 {/* head */}
                 <thead>
