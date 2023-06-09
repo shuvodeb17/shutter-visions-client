@@ -1,6 +1,8 @@
 import React from 'react';
+import { AiOutlineUserAdd } from 'react-icons/ai';
+import { FaUserGraduate } from 'react-icons/fa';
 
-const AllUsersTable = ({ allUser, index, handleMakeAdmin }) => {
+const AllUsersTable = ({ allUser, index, handleMakeAdmin, handleMakeInstructor }) => {
 
 
 
@@ -26,9 +28,11 @@ const AllUsersTable = ({ allUser, index, handleMakeAdmin }) => {
             </td>
             <td>
                 <button onClick={() => handleMakeAdmin(allUser)} className="btn btn-ghost btn-xs">
-                    {allUser.role === 'admin' ? 'remove' : 'Admin'}
+                    {allUser.role === 'admin' ? 'Admin' : <AiOutlineUserAdd size={20} />}
                 </button>
-                <button className="btn btn-ghost btn-xs">Instructor</button>
+                <button onClick={() => handleMakeInstructor(allUser)} className="btn btn-ghost btn-xs">
+                    {allUser.role === 'instructor' ? 'Instructor' : <FaUserGraduate size={18}/>}
+                </button>
             </td>
             <th>
                 <button className="btn btn-ghost btn-xs">details</button>

@@ -4,6 +4,7 @@ import {
 import PopularClasses from "../components/PopularClasses/PopularClasses";
 import Dashboard from "../Layout/Dashboard";
 import Main from "../Layout/Main";
+import AddCourses from "../pages/Dashboard/AddCourses/AddCourses";
 import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
 import Error from "../pages/Error/Error";
 import Home from "../pages/Home/Home/Home";
@@ -41,7 +42,11 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/all-users',
                 element: <AllUsers />
-            }
+            },
+            {
+                path: '/dashboard/add-courses',
+                element: <AddCourses />
+            },
         ]
     },
     {

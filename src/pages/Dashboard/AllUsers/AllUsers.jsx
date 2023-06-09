@@ -3,6 +3,7 @@ import useUsers from '../../../hooks/useUsers';
 import { AuthContext } from '../../../providers/AuthProvider';
 import AllUsersTable from './AllUsersTable';
 import { useQuery } from '@tanstack/react-query'
+import Swal from 'sweetalert2';
 
 
 
@@ -15,7 +16,7 @@ const AllUsers = () => {
     })
 
 
-    // button
+    // button make admin
     const handleMakeAdmin = allUser => {
         fetch(`http://localhost:5000/users/admin/${allUser._id}`, {
             method: 'PATCH'
@@ -25,7 +26,35 @@ const AllUsers = () => {
                 console.log(data)
                 if (data.modifiedCount > 0) {
                     refetch()
-                    console.log('admin')
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: `${user.displayName} is now Admin`,
+                        showConfirmButton: false,
+                        timer: 1500
+                      })
+                      
+                }
+            })
+    }
+
+    // button make instructor
+    const handleMakeInstructor = allUser => {
+        fetch(`http://localhost:5000/users/instructor/${allUser._id}`, {
+            method: 'PATCH'
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.modifiedCount > 0) {
+                    refetch()
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: `${user.displayName} is now Instructor`,
+                        showConfirmButton: false,
+                        timer: 1500
+                      })
                 }
             })
     }
@@ -53,6 +82,7 @@ const AllUsers = () => {
                             allUser={allUser}
                             index={index}
                             handleMakeAdmin={handleMakeAdmin}
+                            handleMakeInstructor={handleMakeInstructor}
                         />)
                     }
                 </tbody>
