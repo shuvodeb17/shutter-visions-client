@@ -12,7 +12,6 @@ const MyCourses = () => {
         const res = await fetch(`http://localhost:5000/my-courses?instructorEmail=${user?.email}`)
         return res.json();
     })
-    console.log(allCourses.length>0)
 
 
     return (

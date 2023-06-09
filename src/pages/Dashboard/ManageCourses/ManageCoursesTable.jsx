@@ -36,7 +36,11 @@ const ManageCoursesTable = ({ course, index, approvedButton }) => {
             <td>
                 {course?.courseName}
             </td>
-            <td>{course?.instructorName}</td>
+            <td>
+                {course?.instructorName}
+                <br />
+                {course?.instructorEmail}
+                </td>
             <td>{course?.status}</td>
             <th>
                 {

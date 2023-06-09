@@ -27,7 +27,7 @@ const Dashboard = () => {
                     {
                         <>
                             <div className='mx-auto text-center mb-5'>
-                                <img className='mx-auto rounded-full' src={user?.photoURL} alt="" />
+                                <img className='mx-auto rounded-full w-4/12' src={user?.photoURL} alt="" />
                                 <h1 className='text-2xl font-bold'>{user?.displayName} (Admin)</h1>
                                 <h1 className='text-center'>{user?.email}</h1>
                             </div>

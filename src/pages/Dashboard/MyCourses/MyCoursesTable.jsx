@@ -14,9 +14,7 @@ const MyCoursesTable = ({ allCourse, index }) => {
 
         <tr>
             <th>
-                <label>
-                    <input type="checkbox" className="checkbox" />
-                </label>
+                {index + 1}
             </th>
             <td>
                 <div className="flex items-center space-x-3">
