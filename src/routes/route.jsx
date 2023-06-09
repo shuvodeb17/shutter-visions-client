@@ -5,8 +5,10 @@ import PopularClasses from "../components/PopularClasses/PopularClasses";
 import Dashboard from "../Layout/Dashboard";
 import Main from "../Layout/Main";
 import AddCourses from "../pages/Dashboard/AddCourses/AddCourses";
+import AllClasses from "../pages/Dashboard/AllClasses/AllClasses";
 import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
 import ManageCourses from "../pages/Dashboard/ManageCourses/ManageCourses";
+import MyCourses from "../pages/Dashboard/MyCourses/MyCourses";
 import Error from "../pages/Error/Error";
 import Home from "../pages/Home/Home/Home";
 import Login from "../pages/Login/Login";
@@ -51,6 +53,14 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/manage-courses',
                 element: <ManageCourses />
+            },
+            {
+                path: '/dashboard/my-courses',
+                element: <MyCourses />
+            },
+            {
+                path: '/dashboard/all-classes',
+                element: <AllClasses />
             },
         ]
     },

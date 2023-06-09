@@ -41,9 +41,9 @@ const ManageCoursesTable = ({ course, index, approvedButton }) => {
             <th>
                 {
                     course?.status == 'pending' &&
-                    <button onClick={() => approvedButton(course)} className="btn btn-ghost btn-xs bg-green-600 me-3">Approved</button>
+                    <button onClick={() => approvedButton(course)} className="btn btn-ghost btn-xs bg-green-600 me-3 text-white">Approved</button>
                 }
-                <button className="btn btn-ghost btn-xs btn-warning bg-red-600">Deny</button>
+                <button className="btn btn-ghost btn-xs btn-warning bg-red-600 text-white">Deny</button>
             </th>
         </tr>
     );
