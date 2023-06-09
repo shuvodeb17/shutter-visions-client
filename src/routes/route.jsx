@@ -6,6 +6,7 @@ import Dashboard from "../Layout/Dashboard";
 import Main from "../Layout/Main";
 import AddCourses from "../pages/Dashboard/AddCourses/AddCourses";
 import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
+import ManageCourses from "../pages/Dashboard/ManageCourses/ManageCourses";
 import Error from "../pages/Error/Error";
 import Home from "../pages/Home/Home/Home";
 import Login from "../pages/Login/Login";
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/add-courses',
                 element: <AddCourses />
+            },
+            {
+                path: '/dashboard/manage-courses',
+                element: <ManageCourses />
             },
         ]
     },

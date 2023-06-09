@@ -13,43 +13,34 @@ const AddCourses = () => {
     const imageHostingURL = `https://api.imgbb.com/1/upload?key=${image_token}`
 
     const onSubmit = data => {
-        let imageAcc;
+
         const formData = new FormData()
         formData.append('image', data.courseImage[0])
+
         fetch(imageHostingURL, {
             method: 'POST',
             body: formData
         })
-        .then(res=>res.json())
-        .then(imageRes => {
-            console.log(imageRes)
-            if(imageRes.success){
-                const imageURL = imageRes.data.display_url;
-                console.log(imageURL)
-                return imageAcc = imageURL
-            }
-        })
-
-        const allData = {
-            courseName: data.courseName,
-            courseImage: data.courseImage[0].name,
-            instructorName: data.instructorName,
-            instructorEmail: data.instructorEmail,
-            seats: parseFloat(data.seats),
-            price: parseFloat(data.price),
-            status: 'pending'
-        }
-
-        fetch(`http://localhost:5000/courses`, {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(allData)
-        })
             .then(res => res.json())
-            .then(data => {
-                console.log(data)
+            .then(imageRes => {
+                if (imageRes.success) {
+                    const imageURL = imageRes.data.display_url;
+                    const { courseName, instructorName, instructorEmail, courseImage, seats, price, status } = data;
+                    const allCourse = { courseName, instructorName, instructorEmail, courseImage: imageURL, seats: parseFloat(seats), price: parseFloat(price), status: 'pending' }
+                    
+                    
+                    fetch(`http://localhost:5000/courses`, {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify(allCourse)
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            console.log(data)
+                        })
+                }
             })
     };
 
