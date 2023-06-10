@@ -27,10 +27,11 @@ const Registration = () => {
             .then(result => {
                 const createdUser = result.user;
                 console.log(createdUser);
+                console.log(result)
 
                 userProfileUpdate(data.name, data.photoUrl)
                     .then(() => {
-                        const savedUser = { name: data.name, email: data.email, photo: data.photoUrl }
+                        const savedUser = { name: data.name, email: data.email, photo: data.photoUrl, role:'student' }
                         fetch(`http://localhost:5000/users`, {
                             method: 'POST',
                             headers: {

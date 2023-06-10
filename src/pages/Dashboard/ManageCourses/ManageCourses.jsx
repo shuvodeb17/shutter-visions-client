@@ -4,13 +4,12 @@ import Swal from 'sweetalert2';
 import ManageCoursesTable from './ManageCoursesTable';
 
 const ManageCourses = () => {
-
     const { data: allCourses = [], refetch } = useQuery(['courses'], async () => {
         const res = await fetch('http://localhost:5000/all-courses')
         return res.json();
     })
+
     const approvedButton = (course) => {
-        console.log(course?._id)
         fetch(`http://localhost:5000/updates/${course?._id}`, {
             method: 'PATCH'
         })
@@ -27,6 +26,22 @@ const ManageCourses = () => {
                         showConfirmButton: false,
                         timer: 1500
                     })
+                }
+            })
+    }
+
+
+    // deny button
+    const denyButton = (course) => {
+        console.log(course)
+        fetch(`http://localhost:5000/deny/${course?._id}`, {
+            method: 'PATCH'
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.modifiedCount > 0) {
+                    refetch();
                 }
             })
     }
@@ -59,6 +74,7 @@ const ManageCourses = () => {
                                 course={course}
                                 index={index}
                                 approvedButton={approvedButton}
+                                denyButton={denyButton}
                             />)
                         }
                     </tbody>

@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { useForm } from "react-hook-form";
+import Swal from 'sweetalert2';
 import { AuthContext } from '../../../providers/AuthProvider';
 
 const image_token = import.meta.env.VITE_IMAGE_TOKEN
@@ -7,7 +8,6 @@ const image_token = import.meta.env.VITE_IMAGE_TOKEN
 const AddCourses = () => {
 
     const { user } = useContext(AuthContext)
-    console.log(user.photoURL)
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
@@ -24,12 +24,14 @@ const AddCourses = () => {
         })
             .then(res => res.json())
             .then(imageRes => {
-                if (imageRes.success) {
+                if (imageRes?.success) {
                     const imageURL = imageRes.data.display_url;
-                    const { courseName, instructorName, instructorEmail, courseImage, seats, price, status } = data;
-                    const allCourse = { courseName, instructorName, instructorEmail, courseImage: imageURL, seats: parseFloat(seats), price: parseFloat(price), status: 'pending', instructorImage: user?.photoURL }
-                    
-                    
+
+                    const { courseName, instructorName, instructorEmail, courseImage, seats, price, status, feedback } = data;
+
+                    const allCourse = { courseName, instructorName, instructorEmail, courseImage: imageURL, seats: parseFloat(seats), price: parseFloat(price), status: 'pending', instructorImage: user?.photoURL, enrolled: parseFloat(0), feedback: '' }
+
+
                     fetch(`http://localhost:5000/courses`, {
                         method: 'POST',
                         headers: {
@@ -40,6 +42,15 @@ const AddCourses = () => {
                         .then(res => res.json())
                         .then(data => {
                             console.log(data)
+                            if (data.insertedId) {
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: `Added`,
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+                            }
                         })
                 }
             })

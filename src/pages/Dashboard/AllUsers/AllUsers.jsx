@@ -37,8 +37,6 @@ const AllUsers = () => {
                 }
             })
     }
-
-    // button make instructor
     const handleMakeInstructor = allUser => {
         fetch(`http://localhost:5000/users/instructor/${allUser._id}`, {
             method: 'PATCH'
@@ -55,9 +53,12 @@ const AllUsers = () => {
                         showConfirmButton: false,
                         timer: 1500
                       })
+                      
                 }
             })
     }
+
+    // button make instructor
 
     return (
         <div className="overflow-x-auto px-3 md:px-16">
