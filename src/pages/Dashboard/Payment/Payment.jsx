@@ -16,10 +16,11 @@ const Payment = () => {
 
     return (
         <div className='px-3 md:px-16'>
-            <h1>Payment</h1>
+            <h1>Course Name: {course?.courseName}</h1>
+            <h1>Course Name: {course?.price}</h1>
 
             <Elements stripe={stripePromise}>
-                <CheckoutForm price={price}/>
+                <CheckoutForm price={price} course={course}/>
             </Elements>
         </div>
     );

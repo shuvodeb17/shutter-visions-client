@@ -11,6 +11,7 @@ import Feedback from "../pages/Dashboard/Feedback/Feedback";
 import ManageCourses from "../pages/Dashboard/ManageCourses/ManageCourses";
 import MyCourses from "../pages/Dashboard/MyCourses/MyCourses";
 import Payment from "../pages/Dashboard/Payment/Payment";
+import PaymentsHistory from "../pages/Dashboard/PaymentsHistory/PaymentsHistory";
 import Error from "../pages/Error/Error";
 import Home from "../pages/Home/Home/Home";
 import Login from "../pages/Login/Login";
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/payment',
                 element: <Payment />
+            },
+            {
+                path: '/dashboard/payment-history',
+                element: <PaymentsHistory />
             },
             {
                 path: '/dashboard/manage-courses',
