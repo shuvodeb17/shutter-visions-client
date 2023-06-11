@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const AllClassesTable = ({ allClass }) => {
+const AllClassesTable = ({ allClass, enrollButton }) => {
     console.log(allClass)
     return (
         <div className='py-5'>
@@ -24,7 +25,9 @@ const AllClassesTable = ({ allClass }) => {
 
                 <div className="divider"></div>
 
-                <button className='w-full p-3 rounded cursor-pointer bg-[#fc2036b8] text-white font-bold border-0'>Enroll</button>
+                <Link to='/dashboard/payment'>
+                    <button onClick={() => enrollButton(allClass)} className='w-full p-3 rounded cursor-pointer bg-[#fc2036b8] text-white font-bold border-0'>Enroll</button>
+                </Link>
 
             </div>
         </div>

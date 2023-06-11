@@ -5,8 +5,6 @@ import { FaUserGraduate } from 'react-icons/fa';
 const AllUsersTable = ({ allUser, index, handleMakeAdmin, handleMakeInstructor }) => {
     console.log(allUser.role)
 
-
-
     return (
         <tr>
             <th>
