@@ -25,7 +25,7 @@ const AllClassesTable = ({ allClass, enrollButton }) => {
 
                 <div className="divider"></div>
 
-                <Link to='/dashboard/payment'>
+                <Link to='/dashboard/payment' state={allClass}>
                     <button onClick={() => enrollButton(allClass)} className='w-full p-3 rounded cursor-pointer bg-[#fc2036b8] text-white font-bold border-0'>Enroll</button>
                 </Link>
 
