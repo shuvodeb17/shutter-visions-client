@@ -5,12 +5,14 @@ import bannerOne from '../../../assets/images/banner/banner1.png';
 import Banner from '../Banner/Banner';
 import Share from '../Share/Share';
 import PopularClasses from '../../../components/PopularClasses/PopularClasses';
+import TopInstructor from '../TopInstructor/TopInstructor';
 
 const Home = () => {
     return (
         <div>
             <Banner />
             <PopularClasses />
+            <TopInstructor />
             <Share />
         </div>
     );

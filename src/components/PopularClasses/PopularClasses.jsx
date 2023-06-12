@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import PopularClassesCard from './PopularClassesCard';
-
+import './PopularClasses.css';
 
 const PopularClasses = () => {
 
@@ -15,11 +15,11 @@ const PopularClasses = () => {
     }
 
     return (
-        <div className='px-3 md:px-16 py-20'>
+        <div className='px-3 md:px-16 py-20 popular-classes'>
             <div>
-                <h1 className='text-3xl font-bold text-center'>Popular Classes: {allClasses?.length}</h1>
+                <h1 className='text-3xl font-bold text-center text-white'>Popular Classes: {allClasses?.length}</h1>
                 <div className='px-3 md:px-5'>
-                    <div className='grid grid-cols-3 gap-5'>
+                    <div className='grid sm:grid-cols-1 md:grid-cols-3 gap-5'>
                         {
                             allClasses?.map(allClass => <PopularClassesCard
                                 key={allClass._id}

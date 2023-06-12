@@ -11,7 +11,7 @@ const Classes = () => {
         fetch(`https://shutter-vission-server.vercel.app/payments-details-specific?email=${user?.email}`)
             .then(res => res.json())
             .then(data => setEnroll(data))
-    }, [])
+    }, [user?.email])
 
     return (
         <div className='px-3 md:px-16'>
@@ -24,6 +24,10 @@ const Classes = () => {
                     key={item?._id}
                     item={item}
                 />)
+            }
+            {
+                enroll.length === 0 &&
+                <h1 className='py-3 text-center text-2xl font-bold'>You have not enrolled any classes yet</h1>
             }
         </div>
     );

@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { AuthContext } from '../../../providers/AuthProvider';
 import MyCoursesTable from './MyCoursesTable';
 
@@ -16,7 +16,7 @@ const MyCourses = () => {
     return (
         <div className='px-3 md:px-16'>
             <h1 className='py-3 text-center text-3xl'>My Courses: {allCourses.length}</h1>
-
+            <h1>Hello</h1>
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}

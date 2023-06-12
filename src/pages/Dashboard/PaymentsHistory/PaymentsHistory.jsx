@@ -14,7 +14,7 @@ const PaymentsHistory = () => {
             .then(data => {
                 setAllPayments(data);
             })
-    }, [])
+    }, [user])
 
     return (
         <div className='px-3 md:px-16'>

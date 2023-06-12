@@ -26,8 +26,6 @@ const Registration = () => {
         signUp(data.email, data.password)
             .then(result => {
                 const createdUser = result.user;
-                console.log(createdUser);
-                console.log(result)
 
                 userProfileUpdate(data.name, data.photoUrl)
                     .then(() => {
@@ -42,6 +40,7 @@ const Registration = () => {
                             .then(res => res.json())
                             .then(data => {
                                 console.log(data)
+                                navigate(from, { replace: true });
                             })
 
                     })
@@ -55,8 +54,8 @@ const Registration = () => {
     };
 
     return (
-        <div className='grid grid-cols-2 gap-5'>
-            <div className='text-center flex items-center justify-center flex-col login-left px-3 md:px-16'>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-5 h-screen'>
+            <div className='text-center flex items-center justify-center flex-col login-left px-3 md:px-16 '>
                 <img className='w-[250px]' src={loginImage} alt="" />
                 <h1 className='text-3xl font-bold mt-5'>Welcome to ShutterVisions</h1>
                 <p className='mt-4'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat, corrupti. Facilis alias natus possimus ab placeat, similique neque error quidem?</p>
@@ -82,19 +81,19 @@ const Registration = () => {
 
 
                         <p className=''>Password</p>
-                        <input type='password' className='w-full p-3 rounded' {...register("password", { required: true, minLength: 6, maxLength: 20, pattern: /(?=.*[A-Z])/ })} />
+                        <input type='password' className='w-full p-3 rounded' {...register("password", { required: true, minLength: 6, maxLength: 20, pattern: /(?=.*?[A-Z])(?=.*?[#?!@$%^&*-])/ })} />
 
                         {errors.password?.type == 'required' && <span className='text-red-600'>Password Field is required</span>}
                         {errors.password?.type == 'minLength' && <span className='text-red-600'>Min length 6.</span>}
                         {errors.password?.type == 'maxLength' && <span className='text-red-600'>Max length 20</span>}
-                        {errors.password?.type == 'pattern' && <span className='text-red-600'>At least one uppercase letter</span>}
+                        {errors.password?.type == 'pattern' && <span className='text-red-600'>At least one uppercase letter And One Special Character</span>}
 
                         <p className=''>Confirm Password</p>
-                        <input type='password' className='w-full p-3 rounded' {...register("confirmPassword", { required: true, minLength: 6, maxLength: 20, pattern: /(?=.*[A-Z])/ })} />
+                        <input type='password' className='w-full p-3 rounded' {...register("confirmPassword", { required: true, minLength: 6, maxLength: 20, pattern: /(?=.*?[A-Z])(?=.*?[#?!@$%^&*-])/ })} />
                         {errors.password?.type == 'required' && <span className='text-red-600'>Confirm Password Field is required</span>}
                         {errors.confirmPassword?.type == 'minLength' && <span className='text-red-600'>Min length 6.</span>}
                         {errors.confirmPassword?.type == 'maxLength' && <span className='text-red-600'>Max length 20</span>}
-                        {errors.confirmPassword?.type == 'pattern' && <span className='text-red-600'>At least one uppercase letter</span>}
+                        {errors.password?.type == 'pattern' && <span className='text-red-600'>At least one uppercase letter And One Special Character</span>}
 
                         <p className='mb-2'>PhotoURL</p>
                         <input type='url' className='w-full p-3 rounded' {...register("photoUrl", { required: true })} />

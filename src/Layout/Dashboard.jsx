@@ -12,7 +12,8 @@ const Dashboard = () => {
     fetch(`https://shutter-vission-server.vercel.app/specific-user?email=${user?.email}`)
       .then(res => res.json())
       .then(data => {
-        setIsRole(data[0].role)
+        setIsRole(data[0]?.role)
+        console.log(data)
       })
   }, [user])
 
@@ -39,10 +40,10 @@ const Dashboard = () => {
                 <h1 className='text-center'>{user?.email}</h1>
               </div>
 
-              <li><Link to=''>User Home</Link></li>
+              {/* <li><Link to=''>User Home</Link></li> */}
               <li><Link to='/dashboard/all-classes'>All Classes</Link></li>
               <li><Link to='/dashboard/payment-history'>Payment History</Link></li>
-              <li><Link to='/dashboard/classes'>Classes</Link></li>
+              <li><Link to='/dashboard/classes'>Enroll Course</Link></li>
 
               <hr />
               <li><Link to='/'>Home</Link></li>

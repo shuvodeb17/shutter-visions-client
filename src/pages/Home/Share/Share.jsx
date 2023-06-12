@@ -5,7 +5,7 @@ import './Share.css';
 const Share = () => {
     return (
         <div className='px-3 md:px-16 share'>
-            <div className='grid grid-cols-2 gap-5 items-center'>
+            <div className='grid sm:grid-cols-1 md:grid-cols-2 gap-5 items-center'>
                 <div>
                     <img src={shareImage} alt="" />
                 </div>
