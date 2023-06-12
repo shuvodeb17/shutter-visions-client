@@ -1,8 +1,22 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../providers/AuthProvider';
 
 
 const PopularClassesCard = ({ allClass, enrollButton }) => {
+
+
+    const { user } = useContext(AuthContext);
+    const [isRole, setIsRole] = useState('');
+    console.log(isRole)
+    useEffect(() => {
+        fetch(`https://shutter-vission-server.vercel.app/specific-user?email=${user?.email}`)
+            .then(res => res.json())
+            .then(data => {
+                setIsRole(data[0].role)
+            })
+    }, [user])
+
     return (
         <div className='py-5 mt-2'>
             {/* bg-white p-3 rounded */}
@@ -28,7 +42,7 @@ const PopularClassesCard = ({ allClass, enrollButton }) => {
                 <div className="divider"></div>
 
                 <Link to='/dashboard/payment' state={allClass}>
-                    <button disabled={allClass.seats == 0} onClick={() => enrollButton(allClass)} className={`${allClass.seats === 0 ? 'w-full p-3 rounded cursor-pointer bg-[#943c45b8] text-white font-bold border-0' : 'w-full p-3 rounded cursor-pointer bg-[#fc2036b8] text-white font-bold border-0'}`} >Enroll</button>
+                    <button disabled={allClass.seats == 0 || isRole == 'admin' || isRole == 'instructor'} onClick={() => enrollButton(allClass)} className={`${allClass.seats === 0 ? 'w-full p-3 rounded cursor-pointer bg-[#943c45b8] text-white font-bold border-0' : 'w-full p-3 rounded cursor-pointer bg-[#fc2036b8] text-white font-bold border-0'}`} >Enroll</button>
                 </Link>
 
             </div>

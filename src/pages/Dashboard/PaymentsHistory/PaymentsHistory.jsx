@@ -1,7 +1,4 @@
-import React from 'react';
-import { useContext } from 'react';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../providers/AuthProvider';
 import PaymentsHistoryTable from './PaymentsHistoryTable';
 
@@ -12,7 +9,7 @@ const PaymentsHistory = () => {
     console.log(allPayments)
 
     useEffect(() => {
-        fetch(`http://localhost:5000/payments-details-specific?email=${user?.email}`)
+        fetch(`https://shutter-vission-server.vercel.app/payments-details-specific?email=${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setAllPayments(data);

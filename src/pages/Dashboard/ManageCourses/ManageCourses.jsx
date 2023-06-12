@@ -5,12 +5,12 @@ import ManageCoursesTable from './ManageCoursesTable';
 
 const ManageCourses = () => {
     const { data: allCourses = [], refetch } = useQuery(['courses'], async () => {
-        const res = await fetch('http://localhost:5000/all-courses')
+        const res = await fetch('https://shutter-vission-server.vercel.app/all-courses')
         return res.json();
     })
 
     const approvedButton = (course) => {
-        fetch(`http://localhost:5000/updates/${course?._id}`, {
+        fetch(`https://shutter-vission-server.vercel.app/updates/${course?._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -34,7 +34,7 @@ const ManageCourses = () => {
     // deny button
     const denyButton = (course) => {
         console.log(course)
-        fetch(`http://localhost:5000/deny/${course?._id}`, {
+        fetch(`https://shutter-vission-server.vercel.app/deny/${course?._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())

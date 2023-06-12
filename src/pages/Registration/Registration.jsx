@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react';
-import loginImage from '../../assets/images/login/login-img.png';
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../providers/AuthProvider';
+import loginImage from '../../assets/images/login/login-img.png';
 import GoogleLogin from '../../components/GoogleLogin/GoogleLogin';
+import { AuthContext } from '../../providers/AuthProvider';
 
 const Registration = () => {
 
@@ -32,7 +32,7 @@ const Registration = () => {
                 userProfileUpdate(data.name, data.photoUrl)
                     .then(() => {
                         const savedUser = { name: data.name, email: data.email, photo: data.photoUrl, role:'student' }
-                        fetch(`http://localhost:5000/users`, {
+                        fetch(`https://shutter-vission-server.vercel.app/users`, {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json'

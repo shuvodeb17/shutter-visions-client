@@ -9,7 +9,7 @@ const Dashboard = () => {
   const [isRole, setIsRole] = useState('');
 
   useEffect(() => {
-    fetch(`http://localhost:5000/specific-user?email=${user?.email}`)
+    fetch(`https://shutter-vission-server.vercel.app/specific-user?email=${user?.email}`)
       .then(res => res.json())
       .then(data => {
         setIsRole(data[0].role)

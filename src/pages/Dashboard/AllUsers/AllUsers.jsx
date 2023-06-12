@@ -1,9 +1,8 @@
+import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
-import useUsers from '../../../hooks/useUsers';
+import Swal from 'sweetalert2';
 import { AuthContext } from '../../../providers/AuthProvider';
 import AllUsersTable from './AllUsersTable';
-import { useQuery } from '@tanstack/react-query'
-import Swal from 'sweetalert2';
 
 
 
@@ -11,14 +10,14 @@ const AllUsers = () => {
     const { user } = useContext(AuthContext)
 
     const { data: allUsers = [], refetch } = useQuery(['users'], async () => {
-        const res = await fetch('http://localhost:5000/all-users')
+        const res = await fetch('https://shutter-vission-server.vercel.app/all-users')
         return res.json();
     })
 
 
     // button make admin
     const handleMakeAdmin = allUser => {
-        fetch(`http://localhost:5000/users/admin/${allUser._id}`, {
+        fetch(`https://shutter-vission-server.vercel.app/users/admin/${allUser._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -38,7 +37,7 @@ const AllUsers = () => {
             })
     }
     const handleMakeInstructor = allUser => {
-        fetch(`http://localhost:5000/users/instructor/${allUser._id}`, {
+        fetch(`https://shutter-vission-server.vercel.app/users/instructor/${allUser._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())

@@ -1,12 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useState } from 'react';
-import { useEffect } from 'react';
+import React from 'react';
 import AllClassesTable from './AllClassesTable';
 
 const AllClasses = () => {
 
     const { data: allClasses = [], refetch } = useQuery(['classes'], async () => {
-        const res = await fetch('http://localhost:5000/all-classes')
+        const res = await fetch('https://shutter-vission-server.vercel.app/all-classes')
         return res.json();
     })
 

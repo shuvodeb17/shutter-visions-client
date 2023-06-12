@@ -1,8 +1,7 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import React, { useEffect, useState } from 'react';
-import Swal from 'sweetalert2';
 import axios from 'axios';
-import { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 import { AuthContext } from '../../../providers/AuthProvider';
 
 
@@ -16,7 +15,7 @@ const CheckoutForm = ({ price, course }) => {
 
 
     useEffect(() => {
-        axios.post('http://localhost:5000/create-payment-intent', { price }, {
+        axios.post('https://shutter-vission-server.vercel.app/create-payment-intent', { price }, {
         })
             .then(response => {
                 // console.log(response.data.clientSecret)
@@ -111,7 +110,7 @@ const CheckoutForm = ({ price, course }) => {
                 instructorName: course?.instructorName,
                 instructorImage: course?.instructorImage
             }
-            fetch(`http://localhost:5000/payments`, {
+            fetch(`https://shutter-vission-server.vercel.app/payments`, {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
@@ -121,7 +120,7 @@ const CheckoutForm = ({ price, course }) => {
                 .then(res => res.json())
                 .then(data => {
                     if (data.insertedId) {
-                        fetch(`http://localhost:5000/payments/${course?._id}`, {
+                        fetch(`https://shutter-vission-server.vercel.app/payments/${course?._id}`, {
                             method: 'PATCH',
                             headers: {
                                 'content-type': 'application/json'
