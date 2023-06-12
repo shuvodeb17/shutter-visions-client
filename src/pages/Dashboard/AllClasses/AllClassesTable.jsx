@@ -2,10 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const AllClassesTable = ({ allClass, enrollButton }) => {
-    console.log(allClass)
     return (
         <div className='py-5'>
-            <div className='bg-white p-3 rounded'>
+            {/* bg-white p-3 rounded */}
+            <div className={`${allClass.seats === 0 ? 'bg-red-300 p-3 rounded' : 'bg-white p-3 rounded'}`}>
                 <img className='rounded h-[180px] w-full' src={allClass?.courseImage} alt="" />
 
                 <div className='flex gap-2 items-center mt-2'>
@@ -19,6 +19,7 @@ const AllClassesTable = ({ allClass, enrollButton }) => {
                 <h2 className="font-bold text-2xl mt-5">{allClass?.courseName}</h2>
 
                 <div className='flex justify-between mt-5 font-lg'>
+                    <p>Enroll: {allClass?.enrolled}</p>
                     <p>Seats: {allClass?.seats}</p>
                     <p>Price: {allClass?.price}</p>
                 </div>
@@ -26,7 +27,7 @@ const AllClassesTable = ({ allClass, enrollButton }) => {
                 <div className="divider"></div>
 
                 <Link to='/dashboard/payment' state={allClass}>
-                    <button onClick={() => enrollButton(allClass)} className='w-full p-3 rounded cursor-pointer bg-[#fc2036b8] text-white font-bold border-0'>Enroll</button>
+                    <button disabled={allClass.seats == 0} onClick={() => enrollButton(allClass)} className={`${allClass.seats === 0 ? 'w-full p-3 rounded cursor-pointer bg-[#943c45b8] text-white font-bold border-0' : 'w-full p-3 rounded cursor-pointer bg-[#fc2036b8] text-white font-bold border-0'}`} >Enroll</button>
                 </Link>
 
             </div>

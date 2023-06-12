@@ -25,21 +25,23 @@ const AllUsersTable = ({ allUser, index, handleMakeAdmin, handleMakeInstructor }
             <td>
                 {allUser?.email}
             </td>
+            <th>
+                <p className="px-1 py-1 text-center rounded bg-green-600 text-white">{allUser?.role}</p>
+            </th>
             <td>
+                {
+                    allUser?.role == 'student' &&
+                    <>
                         <button onClick={() => handleMakeAdmin(allUser)} className="btn btn-ghost btn-xs">
-                            {
-                                allUser.role == 'admin' ?
-                                    'Admin' : <AiOutlineUserAdd size={20} />
-                            }
+                            Make Admin
                         </button>
                         
                         <button onClick={() => handleMakeInstructor(allUser)} className="btn btn-ghost btn-xs">
-                            {allUser?.role == 'instructor' ? 'Instructor' : <FaUserGraduate size={18} />}
+                            Make Instructor
                         </button>
+                    </>
+                }
             </td>
-            <th>
-                <button className="btn btn-ghost btn-xs">{allUser?.role}</button>
-            </th>
         </tr>
     );
 };

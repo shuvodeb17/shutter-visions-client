@@ -1,14 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
-import { useQuery } from '@tanstack/react-query'
 
 
 const Dashboard = () => {
 
     const { user } = useContext(AuthContext);
-
-
 
     return (
         <div className="drawer lg:drawer-open">
@@ -28,7 +25,7 @@ const Dashboard = () => {
                         <>
                             <div className='mx-auto text-center mb-5'>
                                 <img className='mx-auto rounded-full w-4/12' src={user?.photoURL} alt="" />
-                                <h1 className='text-2xl font-bold'>{user?.displayName} (Admin)</h1>
+                                <h1 className='text-2xl font-bold'>{user?.displayName} ({user?.role})</h1>
                                 <h1 className='text-center'>{user?.email}</h1>
                             </div>
                             <li><Link to=''>Admin Home</Link></li>
@@ -39,40 +36,10 @@ const Dashboard = () => {
                             <li><Link to='/dashboard/all-classes'>All Classes</Link></li>
                             <li><Link to='/dashboard/feedback'>Feedback</Link></li>
                             <li><Link to='/dashboard/payment-history'>Payment History</Link></li>
+                            <li><Link to='/dashboard/classes'>Classes</Link></li>
 
                             <hr />
                             <li><Link to='/'>Home</Link></li>
-                        </>
-                    }
-
-                    {
-                        <>
-                            {/* <div className='mx-auto text-center mb-5'>
-                                <img className='mx-auto rounded-full' src={user?.photoURL} alt="" />
-                                <h1 className='text-2xl font-bold'>{user?.displayName} (Instructor)</h1>
-                                <h1 className='text-center'>{user?.email}</h1>
-                            </div>
-                            <li><Link to=''>Instructor Home</Link></li>
-                            <li><Link to='/dashboard/add-courses'>Add Courses</Link></li>
-
-                            <hr />
-                            <li><Link to='/'>Home</Link></li> */}
-                        </>
-                    }
-
-                    {/* student */}
-                    {
-                        <>
-                           {/*  <div className='mx-auto text-center mb-5'>
-                                <img className='mx-auto rounded-full' src={user?.photoURL} alt="" />
-                                <h1 className='text-2xl font-bold'>{user?.displayName} (Student)</h1>
-                                <h1 className='text-center'>{user?.email}</h1>
-                            </div>
-                            <li><Link to=''>User Home</Link></li>
-                            <li><Link to=''>My Classes</Link></li>
-
-                            <hr />
-                            <li><Link to='/'>Home</Link></li> */}
                         </>
                     }
 

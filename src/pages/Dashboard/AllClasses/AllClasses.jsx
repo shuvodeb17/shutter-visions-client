@@ -17,7 +17,7 @@ const AllClasses = () => {
 
     return (
         <div className='px-3 md:px-5 my-navbar'>
-            <h1 className='py-3 text-center text-3xl font-bold text-[#002058]'>All Classes</h1>
+            <h1 className='py-3 text-center text-3xl font-bold text-[#002058]'>All Classes: {allClasses?.length}</h1>
             <div className='grid grid-cols-3 gap-5'>
                 {
                     allClasses?.map(allClass => <AllClassesTable

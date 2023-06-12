@@ -7,6 +7,7 @@ import Main from "../Layout/Main";
 import AddCourses from "../pages/Dashboard/AddCourses/AddCourses";
 import AllClasses from "../pages/Dashboard/AllClasses/AllClasses";
 import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
+import Classes from "../pages/Dashboard/Classes/Classes";
 import Feedback from "../pages/Dashboard/Feedback/Feedback";
 import ManageCourses from "../pages/Dashboard/ManageCourses/ManageCourses";
 import MyCourses from "../pages/Dashboard/MyCourses/MyCourses";
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/payment-history',
                 element: <PaymentsHistory />
+            },
+            {
+                path: '/dashboard/classes',
+                element: <Classes />
             },
             {
                 path: '/dashboard/manage-courses',

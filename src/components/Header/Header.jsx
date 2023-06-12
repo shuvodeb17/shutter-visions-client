@@ -13,7 +13,7 @@ const Header = () => {
     }
 
     return (
-        <div className="navbar px-3 md:px-16 absolute z-10">
+        <div className="navbar px-3 md:px-16">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -22,7 +22,7 @@ const Header = () => {
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         <li><Link to='/'>Home</Link></li>
                         <li><Link to='/'>Instructors</Link></li>
-                        <li><Link to='/'>Classes</Link></li>
+                        <li><Link to='/dashboard/classes'>Classes</Link></li>
                         {user && <li><Link to='/dashboard'>Dashboard</Link></li>}
                     </ul>
                 </div>

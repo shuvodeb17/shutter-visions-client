@@ -29,7 +29,7 @@ const AllUsers = () => {
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',
-                        title: `${user.displayName} is now Admin`,
+                        title: `Make Admin Successful`,
                         showConfirmButton: false,
                         timer: 1500
                       })
@@ -49,7 +49,7 @@ const AllUsers = () => {
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',
-                        title: `${user.displayName} is now Instructor`,
+                        title: `Make Instructor Successful`,
                         showConfirmButton: false,
                         timer: 1500
                       })

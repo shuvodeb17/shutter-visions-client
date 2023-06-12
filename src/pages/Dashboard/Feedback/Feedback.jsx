@@ -13,7 +13,7 @@ const Feedback = () => {
 
     return (
         <div className='px-3 md:px'>
-            <h1 className='py-3 text-center text-3xl'>Feedback</h1>
+            <h1 className='py-3 text-center text-3xl'>Feedback: {allDeny?.length}</h1>
 
             <div className='grid grid-cols-3 gap-5'>
                 {

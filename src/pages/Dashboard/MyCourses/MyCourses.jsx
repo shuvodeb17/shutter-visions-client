@@ -16,7 +16,7 @@ const MyCourses = () => {
 
     return (
         <div className='px-3 md:px-16'>
-            <h1 className='py-3 text-center text-3xl'>My Courses</h1>
+            <h1 className='py-3 text-center text-3xl'>My Courses: {allCourses.length}</h1>
 
             <div className="overflow-x-auto">
                 <table className="table">
@@ -42,6 +42,10 @@ const MyCourses = () => {
                         }
                     </tbody>
                 </table>
+                {
+                    allCourses.length === 0 &&
+                    <h1 className='py-3 text-center text-2xl font-bold'>Please Post Course</h1>
+                }
             </div>
         </div>
     );

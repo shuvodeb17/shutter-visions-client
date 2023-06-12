@@ -104,9 +104,12 @@ const CheckoutForm = ({ price, course }) => {
                 transactionId: paymentIntent.id,
                 courseName: course?.courseName,
                 courseId: course?._id,
-                seats:course?.seats,
+                seats: course?.seats,
                 status: 'service pending',
-                enroll: course?.enrolled
+                enrolled: course?.enrolled,
+                courseImage: course?.courseImage,
+                instructorName: course?.instructorName,
+                instructorImage: course?.instructorImage
             }
             fetch(`http://localhost:5000/payments`, {
                 method: 'POST',
@@ -117,7 +120,19 @@ const CheckoutForm = ({ price, course }) => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data)
+                    if (data.insertedId) {
+                        fetch(`http://localhost:5000/payments/${course?._id}`, {
+                            method: 'PATCH',
+                            headers: {
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify(payment)
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                console.log(data)
+                            })
+                    }
                 })
         }
     }

@@ -50,7 +50,7 @@ const ManageCourses = () => {
 
     return (
         <div className='px-3 md:px-16'>
-            <h1 className='py-3 text-center text-3xl'>Manage Courses</h1>
+            <h1 className='py-3 text-center text-3xl'>Manage Courses: {allCourses?.length}</h1>
 
             <div className="overflow-x-auto">
                 <table className="table">
