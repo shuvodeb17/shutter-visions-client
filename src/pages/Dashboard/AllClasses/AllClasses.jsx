@@ -14,7 +14,6 @@ const AllClasses = () => {
         console.log(enrollDetails)
     }
 
-
     return (
         <div className='px-3 md:px-5 my-navbar'>
             <h1 className='py-3 text-center text-3xl font-bold text-[#002058]'>All Classes: {allClasses?.length}</h1>

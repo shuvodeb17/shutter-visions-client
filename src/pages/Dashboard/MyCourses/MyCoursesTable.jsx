@@ -34,11 +34,11 @@ const MyCoursesTable = ({ allCourse, index }) => {
             </td>
             {/* <td>{allCourse?.}</td> */}
             <td>{allCourse?.status}</td>
-            <th>
+            {/* <th>
                 <button className="bg-red-600 rounded-full p-3 text-[#ddd]" onClick={() => handleDelete(allCourse)}>
                     <BsFillTrash3Fill size={20} />
                 </button>
-            </th>
+            </th> */}
         </tr>
     );
 };

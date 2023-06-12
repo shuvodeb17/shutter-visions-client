@@ -23,6 +23,10 @@ const Feedback = () => {
                     />)
                 }
             </div>
+            {
+                allDeny.length === 0 &&
+                <h1 className='py-3 text-center text-2xl font-bold'>No Feedback Available</h1>
+            }
         </div>
     );
 };

@@ -10,7 +10,7 @@ const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_GATEWAY_PK);
 const Payment = () => {
 
     const course =useLocation().state;
-    const price = course.price;
+    const price = course?.price;
     console.log(course)
     
 

@@ -29,7 +29,7 @@ const MyCourses = () => {
                             <th>Course Image</th>
                             <th>Course Name</th>
                             <th>Status</th>
-                            <th>Action</th>
+                            {/* <th>Action</th> */}
                         </tr>
                     </thead>
                     <tbody>
