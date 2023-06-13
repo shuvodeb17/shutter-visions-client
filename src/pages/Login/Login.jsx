@@ -5,6 +5,8 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import GoogleLogin from '../../components/GoogleLogin/GoogleLogin';
 import { AuthContext } from '../../providers/AuthProvider';
+import toast, { Toaster } from 'react-hot-toast';
+
 
 
 const Login = () => {
@@ -25,6 +27,7 @@ const Login = () => {
                 console.log(loggedUser)
                 setError('')
                 setSuccess('Login successful')
+                toast('Here is your toast.');
                 navigate(from, { replace: true });
             })
             .catch(error => {
@@ -36,6 +39,7 @@ const Login = () => {
     return (
         <div className='grid grid-cols-1 md:grid-cols-2 gap-5 h-screen'>
             <div className='text-center flex items-center justify-center flex-col login-left px-3 md:px-16'>
+                <Toaster />
                 <img className='w-[250px]' src={loginImage} alt="" />
                 <h1 className='text-3xl font-bold mt-5'>Welcome to ShutterVisions</h1>
                 <p className='mt-4'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat, corrupti. Facilis alias natus possimus ab placeat, similique neque error quidem?</p>

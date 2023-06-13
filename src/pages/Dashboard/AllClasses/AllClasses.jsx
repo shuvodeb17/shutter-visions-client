@@ -5,7 +5,7 @@ import AllClassesTable from './AllClassesTable';
 const AllClasses = () => {
 
     const { data: allClasses = [], refetch } = useQuery(['classes'], async () => {
-        const res = await fetch('https://shutter-vission-server.vercel.app/all-classes')
+        const res = await fetch('http://localhost:5000/all-classes')
         return res.json();
     })
 

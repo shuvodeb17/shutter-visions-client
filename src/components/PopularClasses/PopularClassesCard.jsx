@@ -10,7 +10,7 @@ const PopularClassesCard = ({ allClass, enrollButton }) => {
     const [isRole, setIsRole] = useState('');
     console.log(isRole)
     useEffect(() => {
-        fetch(`https://shutter-vission-server.vercel.app/specific-user?email=${user?.email}`)
+        fetch(`http://localhost:5000/specific-user?email=${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setIsRole(data[0].role)

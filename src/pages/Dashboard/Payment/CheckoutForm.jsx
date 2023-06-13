@@ -15,7 +15,7 @@ const CheckoutForm = ({ price, course }) => {
 
 
     useEffect(() => {
-        axios.post('https://shutter-vission-server.vercel.app/create-payment-intent', { price }, {
+        axios.post('http://localhost:5000/create-payment-intent', { price }, {
         })
             .then(response => {
                 // console.log(response.data.clientSecret)
@@ -110,7 +110,7 @@ const CheckoutForm = ({ price, course }) => {
                 instructorName: course?.instructorName,
                 instructorImage: course?.instructorImage
             }
-            fetch(`https://shutter-vission-server.vercel.app/payments`, {
+            fetch(`http://localhost:5000/payments`, {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
@@ -120,7 +120,7 @@ const CheckoutForm = ({ price, course }) => {
                 .then(res => res.json())
                 .then(data => {
                     if (data.insertedId) {
-                        fetch(`https://shutter-vission-server.vercel.app/payments/${course?._id}`, {
+                        fetch(`http://localhost:5000/payments/${course?._id}`, {
                             method: 'PATCH',
                             headers: {
                                 'content-type': 'application/json'

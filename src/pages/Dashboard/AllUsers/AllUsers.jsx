@@ -10,14 +10,14 @@ const AllUsers = () => {
     const { user } = useContext(AuthContext)
 
     const { data: allUsers = [], refetch } = useQuery(['users'], async () => {
-        const res = await fetch('https://shutter-vission-server.vercel.app/all-users')
+        const res = await fetch('http://localhost:5000/all-users')
         return res.json();
     })
 
 
     // button make admin
     const handleMakeAdmin = allUser => {
-        fetch(`https://shutter-vission-server.vercel.app/users/admin/${allUser._id}`, {
+        fetch(`http://localhost:5000/users/admin/${allUser._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -37,7 +37,7 @@ const AllUsers = () => {
             })
     }
     const handleMakeInstructor = allUser => {
-        fetch(`https://shutter-vission-server.vercel.app/users/instructor/${allUser._id}`, {
+        fetch(`http://localhost:5000/users/instructor/${allUser._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())

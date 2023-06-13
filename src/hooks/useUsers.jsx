@@ -6,7 +6,7 @@ const useUsers = () => {
     const [allUsers, setAllUsers] = useState([])
 
     useEffect(() => {
-        fetch(`https://shutter-vission-server.vercel.app/all-users`,{
+        fetch(`http://localhost:5000/all-users`,{
             method:'GET'
         })
             .then(res => res.json())

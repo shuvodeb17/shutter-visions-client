@@ -17,7 +17,7 @@ const GoogleLogin = () => {
                 console.log(result.user)
 
                 const savedUser = { name: result?.user?.displayName, email: result?.user?.email, photo: result?.user?.photoURL, role: 'student' }
-                fetch(`https://shutter-vission-server.vercel.app/users`, {
+                fetch(`http://localhost:5000/users`, {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

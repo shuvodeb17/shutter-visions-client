@@ -30,7 +30,7 @@ const Registration = () => {
                 userProfileUpdate(data.name, data.photoUrl)
                     .then(() => {
                         const savedUser = { name: data.name, email: data.email, photo: data.photoUrl, role:'student' }
-                        fetch(`https://shutter-vission-server.vercel.app/users`, {
+                        fetch(`http://localhost:5000/users`, {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json'

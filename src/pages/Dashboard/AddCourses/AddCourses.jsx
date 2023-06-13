@@ -32,7 +32,7 @@ const AddCourses = () => {
                     const allCourse = { courseName, instructorName, instructorEmail, courseImage: imageURL, seats: parseFloat(seats), price: parseFloat(price), status: 'pending', instructorImage: user?.photoURL, enrolled: parseFloat(0), feedback: '' }
 
 
-                    fetch(`https://shutter-vission-server.vercel.app/courses`, {
+                    fetch(`http://localhost:5000/courses`, {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'

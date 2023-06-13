@@ -6,7 +6,7 @@ import FeedbackCard from './FeedbackCard';
 const Feedback = () => {
 
     const { data: allDeny = [], refetch } = useQuery(['deny'], async () => {
-        const res = await fetch('https://shutter-vission-server.vercel.app/all-deny')
+        const res = await fetch('http://localhost:5000/all-deny')
         return res.json();
     })
 
