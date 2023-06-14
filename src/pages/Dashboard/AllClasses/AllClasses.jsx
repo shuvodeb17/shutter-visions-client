@@ -1,8 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
+import Swal from 'sweetalert2';
+import { AuthContext } from '../../../providers/AuthProvider';
 import AllClassesTable from './AllClassesTable';
 
 const AllClasses = () => {
+
+    const { user } = useContext(AuthContext)
 
     const { data: allClasses = [], refetch } = useQuery(['classes'], async () => {
         const res = await fetch('http://localhost:5000/all-classes')
@@ -10,7 +14,31 @@ const AllClasses = () => {
     })
 
     const enrollButton = (enrollDetails) => {
-        console.log(enrollDetails)
+        const allDetails = {
+            ...enrollDetails,
+            email: user.email
+        }
+        console.log(enrollDetails, user?.email)
+        fetch(`http://localhost:5000/selected-course`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(allDetails)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.insertedId) {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: `Selected`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            })
     }
 
     return (

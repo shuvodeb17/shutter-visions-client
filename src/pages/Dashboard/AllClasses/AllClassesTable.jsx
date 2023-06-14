@@ -40,7 +40,9 @@ const AllClassesTable = ({ allClass, enrollButton }) => {
 
                 <div className="divider"></div>
 
-                <Link to='/dashboard/payment' state={allClass}>
+                {/* to='/dashboard/payment' state={allClass} */}
+
+                <Link>
                     <button disabled={allClass.seats == 0 || isRole == 'admin' || isRole == 'instructor'} onClick={() => enrollButton(allClass)} className={`${allClass.seats === 0 ? 'w-full p-3 rounded cursor-pointer bg-[#943c45b8] text-white font-bold border-0' : 'w-full p-3 rounded cursor-pointer bg-[#fc2036b8] text-white font-bold border-0'}`} >Select</button>
                 </Link>
 

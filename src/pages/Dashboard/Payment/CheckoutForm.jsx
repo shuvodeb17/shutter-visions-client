@@ -130,6 +130,15 @@ const CheckoutForm = ({ price, course }) => {
                             .then(res => res.json())
                             .then(data => {
                                 console.log(data)
+                                fetch(`http://localhost:5000/selected-payments/${course?._id}`, {
+                                    method: 'PATCH',
+                                    headers: {
+                                        'content-type': 'application/json'
+                                    },
+                                    body: JSON.stringify(payment)
+                                })
+                                .then(res=>res.json())
+                                .then(data=>console.log(data))
                             })
                     }
                 })

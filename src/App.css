@@ -1,0 +1,25 @@
+/* 
+#light {
+  --main-heading: #5f99be;
+  --para-clr: #333;
+  --btn-bg-color: #111b20;
+  --btn-text-clr: #fff;
+  --bg-clr: #fff;
+  
+#dark {
+  --main-heading: #5f99be;
+  --para-clr: #fff;
+  --btn-bg-color: #5f99be;
+  --btn-text-clr: #fff;
+  --bg-clr: #111b20;
+}
+} */
+
+#light {
+  background-color: #fff;
+  color: #000;
+}
+#dark {
+  background-color: #333;
+  color: #000;
+}

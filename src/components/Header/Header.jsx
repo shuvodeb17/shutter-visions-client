@@ -1,9 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { ThemeContext } from '../../pages/Home/Home/Home';
 import { AuthContext } from '../../providers/AuthProvider';
 
 const Header = () => {
 
+    // const {toggleTheme} = useContext(ThemeContext)
     const { user, logout } = useContext(AuthContext);
     console.log(user)
 
@@ -11,6 +13,13 @@ const Header = () => {
     const logoutHandler = () => {
         logout()
     }
+
+
+    
+
+
+    
+
 
     return (
         <div className="navbar px-3 md:px-16">
@@ -22,7 +31,7 @@ const Header = () => {
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         <li><Link to='/'>Home</Link></li>
                         <li><Link to='/'>Instructors</Link></li>
-                        <li><Link to='/dashboard/classes'>Classes</Link></li>
+                        <li><Link to='/dashboard/all-classes'>Classes</Link></li>
                         {user && <li><Link to='/dashboard'>Dashboard</Link></li>}
                     </ul>
                 </div>
@@ -32,8 +41,10 @@ const Header = () => {
                 <ul className="menu menu-horizontal px-1">
                     <li><Link to='/'>Home</Link></li>
                     <li><Link to='/'>Instructors</Link></li>
-                    <li><Link to='/dashboard/classes'>Classes</Link></li>
+                    <li><Link to='/dashboard/all-classes'>Classes</Link></li>
                     {user && <li><Link to='/dashboard'>Dashboard</Link></li>}
+                    <button onClick={() => toggleTheme()}>Dark Mode</button>
+
                 </ul>
             </div>
             <div className="navbar-end">

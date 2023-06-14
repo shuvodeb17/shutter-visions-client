@@ -44,7 +44,6 @@ const PopularClassesCard = ({ allClass, enrollButton }) => {
                 <Link to='/dashboard/payment' state={allClass}>
                     <button disabled={allClass.seats == 0 || isRole == 'admin' || isRole == 'instructor'} onClick={() => enrollButton(allClass)} className={`${allClass.seats === 0 ? 'w-full p-3 rounded cursor-pointer bg-[#943c45b8] text-white font-bold border-0' : 'w-full p-3 rounded cursor-pointer bg-[#fc2036b8] text-white font-bold border-0'}`} >Enroll</button>
                 </Link>
-
             </div>
         </div>
     );
