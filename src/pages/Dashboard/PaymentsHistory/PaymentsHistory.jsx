@@ -9,7 +9,7 @@ const PaymentsHistory = () => {
     console.log(allPayments)
 
     useEffect(() => {
-        fetch(`http://localhost:5000/payments-details-specific?email=${user?.email}`)
+        fetch(`https://shutter-vission-server.vercel.app/payments-details-specific?email=${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setAllPayments(data);

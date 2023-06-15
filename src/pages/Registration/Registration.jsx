@@ -30,7 +30,7 @@ const Registration = () => {
                 userProfileUpdate(data.name, data.photoUrl)
                     .then(() => {
                         const savedUser = { name: data.name, email: data.email, photo: data.photoUrl, role:'student' }
-                        fetch(`http://localhost:5000/users`, {
+                        fetch(`https://shutter-vission-server.vercel.app/users`, {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json'
@@ -60,7 +60,7 @@ const Registration = () => {
             <div className='text-center flex items-center justify-center flex-col login-left px-3 md:px-16 '>
                 <img className='w-[250px]' src={loginImage} alt="" />
                 <h1 className='text-3xl font-bold mt-5'>Welcome to ShutterVisions</h1>
-                <p className='mt-4'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat, corrupti. Facilis alias natus possimus ab placeat, similique neque error quidem?</p>
+                <p className='mt-4'>Shutter Visions Photography</p>
             </div>
             <div className='flex justify-center flex-col px-3 md:px-16'>
 

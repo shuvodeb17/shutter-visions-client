@@ -42,7 +42,7 @@ const Login = () => {
                 <Toaster />
                 <img className='w-[250px]' src={loginImage} alt="" />
                 <h1 className='text-3xl font-bold mt-5'>Welcome to ShutterVisions</h1>
-                <p className='mt-4'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat, corrupti. Facilis alias natus possimus ab placeat, similique neque error quidem?</p>
+                <p className='mt-4'>Shutter Visions Photography</p>
             </div>
             <div className='flex justify-center flex-col px-3 md:px-16'>
 

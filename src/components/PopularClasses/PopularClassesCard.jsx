@@ -1,7 +1,7 @@
+import { motion } from 'framer-motion';
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
-import { motion } from 'framer-motion';
 
 
 const PopularClassesCard = ({ allClass, enrollButton }) => {
@@ -11,7 +11,7 @@ const PopularClassesCard = ({ allClass, enrollButton }) => {
     const [isRole, setIsRole] = useState('');
     console.log(isRole)
     useEffect(() => {
-        fetch(`http://localhost:5000/specific-user?email=${user?.email}`)
+        fetch(`https://shutter-vission-server.vercel.app/specific-user?email=${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setIsRole(data[0].role)

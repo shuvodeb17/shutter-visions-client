@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../../providers/AuthProvider';
 import AllClassesTable from './AllClassesTable';
@@ -9,7 +9,7 @@ const AllClasses = () => {
     const { user } = useContext(AuthContext)
 
     const { data: allClasses = [], refetch } = useQuery(['classes'], async () => {
-        const res = await fetch('http://localhost:5000/all-classes')
+        const res = await fetch('https://shutter-vission-server.vercel.app/all-classes')
         return res.json();
     })
 
@@ -21,7 +21,7 @@ const AllClasses = () => {
             mainId: enrollDetails?._id
         }
         console.log(enrollDetails, user?.email)
-        fetch(`http://localhost:5000/selected-course`, {
+        fetch(`https://shutter-vission-server.vercel.app/selected-course`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

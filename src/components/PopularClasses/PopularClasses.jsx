@@ -6,7 +6,7 @@ import PopularClassesCard from './PopularClassesCard';
 const PopularClasses = () => {
 
     const { data: allClasses = [], refetch } = useQuery(['classes'], async () => {
-        const res = await fetch('http://localhost:5000/popular-classes')
+        const res = await fetch('https://shutter-vission-server.vercel.app/popular-classes')
         return res.json();
     })
 

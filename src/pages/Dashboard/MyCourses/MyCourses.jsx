@@ -8,7 +8,7 @@ const MyCourses = () => {
     const { user } = useContext(AuthContext)
 
     const { data: allCourses = [], refetch } = useQuery(['myCourses', user], async () => {
-        const res = await fetch(`http://localhost:5000/my-courses?instructorEmail=${user?.email}`)
+        const res = await fetch(`https://shutter-vission-server.vercel.app/my-courses?instructorEmail=${user?.email}`)
         return res.json();
     })
 

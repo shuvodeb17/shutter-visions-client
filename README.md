@@ -5,4 +5,4 @@
 * 4. Admin can deny any class. 
 * 5. Student can delete the selected class.
 
-* live site: 
+* live site: https://shutter-vissions.web.app/

@@ -12,7 +12,7 @@ const ManageCoursesTable = ({ course, index, approvedButton, denyButton }) => {
 
     const onSubmit = data => {
         console.log(data)
-        fetch(`http://localhost:5000/feedback/${_id}`, {
+        fetch(`https://shutter-vission-server.vercel.app/feedback/${_id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'

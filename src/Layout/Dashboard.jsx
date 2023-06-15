@@ -1,16 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { AiFillHome, AiFillPlusCircle, AiOutlineHistory } from 'react-icons/ai';
+import { BsPersonVideo3 } from 'react-icons/bs';
+import { FaPhotoVideo, FaUsers } from 'react-icons/fa';
+import { GrCheckboxSelected } from 'react-icons/gr';
+import { SiGoogleclassroom } from 'react-icons/si';
+import { TbBrandOnedrive } from 'react-icons/tb';
+import { VscFeedback } from 'react-icons/vsc';
 import { Link, Outlet } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
-import { FaUsers,FaPhotoVideo } from 'react-icons/fa';
-import { SiGoogleclassroom } from 'react-icons/si';
-import { MdClass } from 'react-icons/md';
-import { AiFillHome,AiFillPlusCircle } from 'react-icons/ai';
-import { RxVideo } from 'react-icons/rx';
-import { VscFeedback } from 'react-icons/vsc';
-import { BsPersonVideo3 } from 'react-icons/bs';
-import {GrCheckboxSelected } from 'react-icons/gr';
-import {AiOutlineHistory } from 'react-icons/ai';
-import {TbBrandOnedrive } from 'react-icons/tb';
 
 
 
@@ -20,7 +17,7 @@ const Dashboard = () => {
   const [isRole, setIsRole] = useState('');
 
   useEffect(() => {
-    fetch(`http://localhost:5000/specific-user?email=${user?.email}`)
+    fetch(`https://shutter-vission-server.vercel.app/specific-user?email=${user?.email}`)
       .then(res => res.json())
       .then(data => {
         setIsRole(data[0]?.role)

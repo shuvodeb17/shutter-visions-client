@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../../providers/AuthProvider';
 import SelectedClassCard from './SelectedClassCard';
@@ -10,8 +10,8 @@ const SelectedClass = () => {
     console.log(user?.email)
 
     const { data: selected = [], refetch } = useQuery(['selected'], async () => {
-        // const res = await fetch('http://localhost:5000/course-select')
-        const res = await fetch(`http://localhost:5000/course-select?email=${user.email}`)
+        // const res = await fetch('https://shutter-vission-server.vercel.app/course-select')
+        const res = await fetch(`https://shutter-vission-server.vercel.app/course-select?email=${user.email}`)
         return res.json();
     })
 
@@ -21,7 +21,7 @@ const SelectedClass = () => {
 
     const deleteHandler = (deleteId) => {
         console.log(deleteId._id)
-        fetch(`http://localhost:5000/select-item-delete/${deleteId?._id}`, {
+        fetch(`https://shutter-vission-server.vercel.app/select-item-delete/${deleteId?._id}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json'

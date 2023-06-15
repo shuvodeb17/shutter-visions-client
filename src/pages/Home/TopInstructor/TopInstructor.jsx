@@ -7,7 +7,7 @@ const TopInstructor = () => {
     console.log(allInstructor)
 
     useEffect(() => {
-        fetch(`http://localhost:5000/top-instructor`)
+        fetch(`https://shutter-vission-server.vercel.app/top-instructor`)
             .then(res => res.json())
             .then(data => {
                 setAllInstructor(data)
