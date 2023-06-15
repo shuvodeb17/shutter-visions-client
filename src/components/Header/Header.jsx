@@ -1,11 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { ThemeContext } from '../../pages/Home/Home/Home';
 import { AuthContext } from '../../providers/AuthProvider';
+import logo from '../../assets/images/logo.png'
 
 const Header = () => {
 
-    // const {toggleTheme} = useContext(ThemeContext)
     const { user, logout } = useContext(AuthContext);
     console.log(user)
 
@@ -35,7 +34,9 @@ const Header = () => {
                         {user && <li><Link to='/dashboard'>Dashboard</Link></li>}
                     </ul>
                 </div>
-                <Link to='/' className="btn btn-ghost normal-case text-xl">ShutterVisions</Link>
+                <Link to='/' className="">
+                    <img className='w-[120px]' src={logo} alt="" />
+                </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">

@@ -28,12 +28,10 @@ const InstructorTable = ({ singleInstructor, index }) => {
             </td>
             <td>
                 {singleInstructor?.instructorName}
-                <br />
+            </td>
+            <td>
                 <span className="badge badge-ghost badge-sm">{singleInstructor?.instructorEmail}</span>
             </td>
-            <th>
-                <button className="btn btn-ghost btn-xs">details</button>
-            </th>
         </motion.tr>
     );
 };

@@ -70,9 +70,9 @@ const AddCourses = () => {
 
                 <input className='w-full p-3 rounded' value={user?.email} placeholder='Instructor Email' {...register("instructorEmail")} />
 
-                <input className='w-full p-3 rounded' placeholder='Available Seats' {...register("seats")} />
+                <input type='number' className='w-full p-3 rounded' placeholder='Available Seats' {...register("seats")} />
 
-                <input className='w-full p-3 rounded' placeholder='Price' {...register("price")} />
+                <input type='number' className='w-full p-3 rounded' placeholder='Price' {...register("price")} />
 
                 <input className='w-full p-3 rounded cursor-pointer bg-[#fc2036b8] text-white font-bold border-0' type="submit" />
             </form>

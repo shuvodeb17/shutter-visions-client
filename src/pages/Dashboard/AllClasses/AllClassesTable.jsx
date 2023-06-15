@@ -42,7 +42,8 @@ const AllClassesTable = ({ allClass, enrollButton }) => {
                     </div>
                 </div>
 
-                <h2 className="font-bold text-2xl mt-5">{allClass?.courseName}</h2>
+                <h2 className="bg-[green] text-white border-0 mt-4 w-3/12 text-center rounded">{allClass?.status}</h2>
+                <h2 className="font-bold text-2xl mt-3">{allClass?.courseName}</h2>
 
                 <div className='flex justify-between mt-5 font-lg'>
                     <p>Enroll: {allClass?.enrolled}</p>

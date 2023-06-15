@@ -43,7 +43,8 @@ const MyCoursesTable = ({ allCourse, index }) => {
             <td>
                 {allCourse?.courseName}
             </td>
-            {/* <td>{allCourse?.}</td> */}
+            <td>{allCourse?.enrolled}</td>
+            <td>{allCourse?.feedback}</td>
             <td>{allCourse?.status}</td>
             {/* <th>
                 <button className="bg-red-600 rounded-full p-3 text-[#ddd]" onClick={() => handleDelete(allCourse)}>

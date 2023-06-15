@@ -22,9 +22,9 @@ const Instructors = () => {
                             <th>
                                 #
                             </th>
+                            <th>Image</th>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>

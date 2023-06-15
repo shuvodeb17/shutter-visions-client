@@ -7,7 +7,7 @@ const MyCourses = () => {
 
     const { user } = useContext(AuthContext)
 
-    const { data: allCourses = [], refetch } = useQuery(['myCourses'], async () => {
+    const { data: allCourses = [], refetch } = useQuery(['myCourses', user], async () => {
         const res = await fetch(`http://localhost:5000/my-courses?instructorEmail=${user?.email}`)
         return res.json();
     })
@@ -15,7 +15,7 @@ const MyCourses = () => {
 
     return (
         <div className='px-3 md:px-16'>
-            <h1 className='py-3 text-center text-3xl'>My Courses: {allCourses.length}</h1>
+            <h1 className='py-3 text-center text-3xl'>My Classes: {allCourses.length}</h1>
             <h1>Hello</h1>
             <div className="overflow-x-auto">
                 <table className="table">
@@ -27,6 +27,8 @@ const MyCourses = () => {
                             </th>
                             <th>Course Image</th>
                             <th>Course Name</th>
+                            <th>Total Enrolled Students</th>
+                            <th>Feedback</th>
                             <th>Status</th>
                             {/* <th>Action</th> */}
                         </tr>
