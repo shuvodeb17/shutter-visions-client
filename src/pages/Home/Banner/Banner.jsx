@@ -24,7 +24,7 @@ const Banner = () => {
             </div>
         </div> */}
 
-            <div>
+            <div className='z-0'>
                 <Carousel>
                     <div>
                         <img src={img2} />

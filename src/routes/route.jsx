@@ -16,6 +16,7 @@ import PaymentsHistory from "../pages/Dashboard/PaymentsHistory/PaymentsHistory"
 import SelectedClass from "../pages/Dashboard/SelectedClass/SelectedClass";
 import Error from "../pages/Error/Error";
 import Home from "../pages/Home/Home/Home";
+import Instructors from "../pages/Instructors/Instructors";
 import Login from "../pages/Login/Login";
 import Registration from "../pages/Registration/Registration";
 import PrivateRoute from "./PrivateRoute";
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
             {
                 path: 'popular-class',
                 element: <PopularClasses />
+            },
+            {
+                path: 'instructors',
+                element: <Instructors />
             },
             {
                 path: 'login',

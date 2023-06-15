@@ -22,7 +22,7 @@ const Header = () => {
 
 
     return (
-        <div className="navbar px-3 md:px-16">
+        <div className="navbar px-3 md:px-16 z-50">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -30,7 +30,7 @@ const Header = () => {
                     </label>
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         <li><Link to='/'>Home</Link></li>
-                        <li><Link to='/'>Instructors</Link></li>
+                        <li><Link to='/instructors'>Instructors</Link></li>
                         <li><Link to='/dashboard/all-classes'>Classes</Link></li>
                         {user && <li><Link to='/dashboard'>Dashboard</Link></li>}
                     </ul>
@@ -40,10 +40,9 @@ const Header = () => {
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
                     <li><Link to='/'>Home</Link></li>
-                    <li><Link to='/'>Instructors</Link></li>
+                    <li><Link to='/instructors'>Instructors</Link></li>
                     <li><Link to='/dashboard/all-classes'>Classes</Link></li>
                     {user && <li><Link to='/dashboard'>Dashboard</Link></li>}
-                    <button onClick={() => toggleTheme()}>Dark Mode</button>
 
                 </ul>
             </div>

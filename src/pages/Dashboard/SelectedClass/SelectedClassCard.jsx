@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../../../providers/AuthProvider';
+import {motion} from 'framer-motion'
 
 const SelectedClassCard = ({ select, index, paymentHandler, deleteHandler }) => {
     console.log(select)
@@ -19,7 +20,17 @@ const SelectedClassCard = ({ select, index, paymentHandler, deleteHandler }) => 
     return (
 
         <>
-            <tr className={`${select?.seats === 0 ? 'bg-red-300' : ''}`}>
+            <motion.tr 
+            initial={{ x: -100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{
+                delay: 0.2,
+                x: { type: 'spring', stiffness: 60 },
+                opacity: { duration: 1 },
+                ease: 'easeIn',
+                duration: 1
+            }}
+            className={`${select?.seats === 0 ? 'bg-red-300' : ''}`}>
                 <th>
                     {index + 1}
                 </th>
@@ -48,7 +59,7 @@ const SelectedClassCard = ({ select, index, paymentHandler, deleteHandler }) => 
                 <th>
                     <button onClick={() => deleteHandler(select)} className="btn btn-ghost btn-xs">Delete</button>
                 </th>
-            </tr>
+            </motion.tr>
         </>
     );
 };

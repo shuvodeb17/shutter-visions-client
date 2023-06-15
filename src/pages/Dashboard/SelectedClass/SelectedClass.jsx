@@ -17,7 +17,6 @@ const SelectedClass = () => {
 
     const paymentHandler = (payDetails) => {
         console.log(payDetails)
-
     }
 
     const deleteHandler = (deleteId) => {

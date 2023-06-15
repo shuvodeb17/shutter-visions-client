@@ -119,7 +119,7 @@ const CheckoutForm = ({ price, course }) => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    if (data.insertedId) {
+                    // if (data.insertedId) {
                         fetch(`http://localhost:5000/payments/${course?._id}`, {
                             method: 'PATCH',
                             headers: {
@@ -130,17 +130,18 @@ const CheckoutForm = ({ price, course }) => {
                             .then(res => res.json())
                             .then(data => {
                                 console.log(data)
-                                fetch(`http://localhost:5000/selected-payments/${course?._id}`, {
+                            })
+
+                            fetch(`http://localhost:5000/selected-payments/${course?._id}`, {
                                     method: 'PATCH',
                                     headers: {
                                         'content-type': 'application/json'
                                     },
                                     body: JSON.stringify(payment)
                                 })
-                                .then(res=>res.json())
-                                .then(data=>console.log(data))
-                            })
-                    }
+                                    .then(res => res.json())
+                                    .then(data => console.log(data))
+                    // }
                 })
         }
     }

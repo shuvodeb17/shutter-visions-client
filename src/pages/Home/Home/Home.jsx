@@ -7,6 +7,7 @@ import Share from '../Share/Share';
 import PopularClasses from '../../../components/PopularClasses/PopularClasses';
 import TopInstructor from '../TopInstructor/TopInstructor';
 import { useState } from 'react';
+import Footer from '../../Footer/Footer';
 
 export const ThemeContext = createContext(null)
 
@@ -30,6 +31,7 @@ const Home = () => {
                 <PopularClasses />
                 <TopInstructor />
                 <Share />
+                <Footer />
             </div>
         </ThemeContext.Provider>
     );

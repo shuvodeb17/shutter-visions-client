@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProvider';
+import { motion } from 'framer-motion';
+
 
 const AllClassesTable = ({ allClass, enrollButton }) => {
 
@@ -19,7 +21,17 @@ const AllClassesTable = ({ allClass, enrollButton }) => {
     return (
         <div className='py-5'>
             {/* bg-white p-3 rounded */}
-            <div className={`${allClass.seats === 0 ? 'bg-red-300 p-3 rounded' : 'bg-white p-3 rounded'}`}>
+            <motion.div
+            initial={{ x: -100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{
+                delay: 0.2,
+                x: { type: 'spring', stiffness: 60 },
+                opacity: { duration: 1 },
+                ease: 'easeIn',
+                duration: 1
+            }}
+            className={`${allClass.seats === 0 ? 'bg-red-300 p-3 rounded' : 'bg-white p-3 rounded'}`}>
                 <img className='rounded h-[180px] w-full' src={allClass?.courseImage} alt="" />
 
                 <div className='flex gap-2 items-center mt-2'>
@@ -46,7 +58,7 @@ const AllClassesTable = ({ allClass, enrollButton }) => {
                     <button disabled={allClass.seats == 0 || isRole == 'admin' || isRole == 'instructor'} onClick={() => enrollButton(allClass)} className={`${allClass.seats === 0 ? 'w-full p-3 rounded cursor-pointer bg-[#943c45b8] text-white font-bold border-0' : 'w-full p-3 rounded cursor-pointer bg-[#fc2036b8] text-white font-bold border-0'}`} >Select</button>
                 </Link>
 
-            </div>
+            </motion.div>
         </div>
     );
 };

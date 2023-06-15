@@ -14,9 +14,11 @@ const AllClasses = () => {
     })
 
     const enrollButton = (enrollDetails) => {
+        console.log(enrollDetails)
         const allDetails = {
             ...enrollDetails,
-            email: user.email
+            email: user.email,
+            mainId: enrollDetails?._id
         }
         console.log(enrollDetails, user?.email)
         fetch(`http://localhost:5000/selected-course`, {

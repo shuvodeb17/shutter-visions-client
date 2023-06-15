@@ -46,10 +46,12 @@ const Registration = () => {
                     })
                     .catch(error => {
                         console.log(error.message);
+                        setError(error.message)
                     })
             })
             .catch(error => {
                 console.log(error.message);
+                setError(error.message)
             })
     };
 
